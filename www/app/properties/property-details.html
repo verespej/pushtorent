@@ -3,4 +3,24 @@
 	<a href="#/properties">Go back to list</a>
 	<p>Id: {{propertyDetails.data.id}}</p>
 	<p>Name: {{propertyDetails.data.name}}</p>
+	<p>Desciption: {{propertyDetails.data.desc}}</p>
+	<p>Cost to Work: {{propertyDetails.data.costToWork}}</p>
+	<p>Heath care services</p>
+	<div ng-repeat="hc in propertyDetails.data.healthCareServices" >
+	<p>{{hc}}</p>
+	</div>
+	<p>Shopping</p>
+	<div ng-repeat="s in propertyDetails.data.shopping" >
+	<p>{{s}}</p>
+	</div>
+	<p>Schools</p>
+	<div ng-repeat="ss in propertyDetails.data.schoools" >
+	<p>{{ss}}</p>
+	</div>
+	<p>Crime</p>
+	<div ng-repeat="c in propertyDetails.data.crime" >
+	<p>{{c.name}}: {{c.rate}}</p>
+	</div>
+
+	<input type="button" value="Apply"/>
 </div>

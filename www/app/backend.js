@@ -54,10 +54,12 @@ angular
 					shopping: ['store1', 'store2'],
 					schools: ['school1', 'school2'],
 					crime: [{
-						'robbery': 'rate'
+						name: 'robbery',
+						rate:'rate'
 					}, 
 					{
-						'breakins': 'rate'
+						name: 'breakins',
+						rate: 'rate'
 					}]
 				}
 			}
