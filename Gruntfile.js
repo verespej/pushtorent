@@ -1,5 +1,12 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
+		less: {
+			dev: {
+				files: {
+					'bin-site/main.css': 'www/app/main.less'
+				}
+			}
+		},
 		processhtml: {
 			dev: {
 				options: {
@@ -49,6 +56,6 @@ module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
 
-	grunt.registerTask('dev', ['processhtml:dev', 'connect', 'watch']);
+	grunt.registerTask('dev', ['less', 'processhtml:dev', 'connect', 'watch']);
 	grunt.registerTask('default', ['dev']);
 };
