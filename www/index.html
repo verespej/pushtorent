@@ -2,14 +2,26 @@
 <html ng-app="pushtorent">
 <head>
 	<title>Push To Rent</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="bootswatch-dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css"/>
-
 	<link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 
 <body>
-	<div class="container-fluid" ng-view ></div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#/home">Push To Rent</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container" ng-view ></div>
 
 	<script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="angular/angular.min.js"></script>
