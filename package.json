@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "Web server for pushtotalk",
 	"scripts": {
-		"start": "node app.js"
+		"start": "node server/app.js"
 	},
 	"repository": {
 		"type": "git",
