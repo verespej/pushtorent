@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 var dbsDirPath = './dbs';
-var dbsFilePathSuffix = '.db.dat';
+var dbsFilePathSuffix = '.db.json';
 
 function DbAccess() {
 	if (!fs.existsSync(dbsDirPath)) {
