@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html ng-app="pushtorent">
+<head>
+	<title>Push To Rent</title>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+	<div ng-include="'app/common/navbar.html'"></div>
+
+	<div class="container-fluid content-container" ng-view ></div>
+
+	<script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src="angular-route/angular-route.min.js"></script>
+
+	<!-- build:template
+	<% _.each(scripts, function(script){ %>
+	<script type="text/javascript" src="<%= script%>"></script>
+	<% }); %>
+	/build -->
+	<!-- -->
+</body>
+</html>
