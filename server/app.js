@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var usersDbName = 'users';
 
+dbs.setDb(usersDbName, {});
+
+
 app.get('/test', function(req, res) {
 	res.send('ok');
 });
@@ -40,8 +43,17 @@ app.post('/server/users/:id', function(req, res) {
 // /server/properties?user={id}
 // Get properties list for a specific user
 app.get('/server/properties', function(req, res) {
-	console.log('Saving user ' + req.params.id + ': ' + req.body);
-	dbs.setVal(usersDbName, req.params.id, req.body);
+	var data = [];
+	for (var i = 0; i < 10; i++) {
+		data.push({
+			id: i,
+			name: 'NAME',
+			desc: 'description',
+			img: 'http://placehold.it/242x200',
+			score: '100'
+		});
+	}
+	res.send(data);
 });
 
 // Get details about property with given id
@@ -56,8 +68,22 @@ app.set('/server/properties/:id', function(req, res) {
 
 // Get all applications for a specific user
 // /server/applications?user={id}
-app.post('/server/applications', function(req, res) {
-	res.status(501).send('Not implemented');
+app.get('/server/applications', function(req, res) {
+	var data = [];
+	for (var i = 0; i < 10; i++) {
+		data.push({
+			id: i,
+			property: {
+				id: i,
+				name: 'NAME',
+				desc: 'description',
+				img: 'http://placehold.it/242x200',
+				score: '100'
+			},
+			status: 'underReview'
+		});
+	}
+	res.send(data);
 });
 
 // Get an application with given id
