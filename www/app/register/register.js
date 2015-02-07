@@ -4,7 +4,7 @@ angular
 		function($routeProvider) {
 			$routeProvider.when('/register', {
 				templateUrl: 'app/register/register.html',
-				controller: 'Register',
+				controller: 'RegisterCtrl',
 				controllerAs: 'register'
 			});
 		}
