@@ -18,19 +18,19 @@ function getFilePath(dbName) {
 	return path.join(dbsDirPath, dbName + dbsFilePathSuffix);
 }
 
-DbAccess.prototype.set = function(dbName, db) {
+DbAccess.prototype.setDb = function(dbName, db) {
 	var dest = getFilePath(dbName);
-	dbs[dbName] = db;
+	this.dbs[dbName] = db;
 
 	console.log('Writing db to ' + dest);
 
-	var text = JSON.stringify(dbs[dbName]);
+	var text = JSON.stringify(this.dbs[dbName]);
 	fs.writeFileSync(dest, text);
 };
 
-DbAccess.prototype.get = function(dbName) {
-	if (typeof(dbs[dbName]) !== 'undefined') {
-		return dbs[dbName];
+DbAccess.prototype.getDb = function(dbName) {
+	if (typeof(this.dbs[dbName]) !== 'undefined') {
+		return this.dbs[dbName];
 	}
 
 	var src = getFilePath(dbName);
@@ -39,9 +39,24 @@ DbAccess.prototype.get = function(dbName) {
 	}
 
 	var db = JSON.parse(fs.readFileSync(src));
-	dbs[dbName] = db;
+	this.dbs[dbName] = db;
 	return db;
 };
 
-module.exports = DbAccess;
+DbAccess.prototype.setVal = function(dbName, key, val) {
+	if (typeof(this.dbs[dbName]) === 'undefined') {
+		this.dbs[Name] = {};
+	}
+	this.dbs[dbName][key] = val;
+	this.setDb(dbName, this.dbs[dbName]);
+}
 
+DbAccess.prototype.getVal = function(dbName, key) {
+	var db = this.getDb(dbName);
+	if (typeof(db[key]) === 'undefined') {
+		throw new Error('DB ' + dbName + ' doesn\'t contain an entry for ' + key);
+	}
+	return db[prop];
+};
+
+module.exports = DbAccess;
