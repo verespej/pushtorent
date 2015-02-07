@@ -4,6 +4,7 @@
 	<title>Push To Rent</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css"/>
+
 	<link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 
@@ -15,7 +16,7 @@
 	<script type="text/javascript" src="angular-route/angular-route.min.js"></script>
 
 	<!-- build:template
-	<% _.each(scripts, function(script){ %>
+	<% if (typeof scripts !== 'undefined') _.each(scripts, function(script){ %>
 	<script type="text/javascript" src="<%= script%>"></script>
 	<% }); %>
 	/build -->

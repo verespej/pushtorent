@@ -7,6 +7,25 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+		ngtemplates: {
+			tempCache: {
+				cwd: 'www',
+				src: 'app/**/*.html',
+				dest: 'bin-site/tempCache.js.tmp'
+			}
+		},
+		uglify: {
+			options: {
+				mangle: false
+			},
+			dist: {
+				files: {
+					'bin-site/main.min.js': ['bin-site/tempCache.js.tmp', 'www/app/**/*.js']
+				}
+			}
+		},
+
 		processhtml: {
 			dev: {
 				options: {
@@ -15,6 +34,16 @@ module.exports = function(grunt) {
 						scripts: grunt.file.expand({
 							cwd: 'www'
 						}, 'app/**/*.js'),
+					}
+				},
+				files: {
+					'bin-site/index.html': 'www/index.html'
+				}
+			},
+			dist: {
+				options: {
+					data: {
+						scripts: ['main.min.js']
 					}
 				},
 				files: {
@@ -39,7 +68,7 @@ module.exports = function(grunt) {
 			},
 			less: {
 				files: ['www/**/*.less'],
-				tasks: ['concat:less', 'less:dev', 'autoprefixer']
+				tasks: ['less:dev']
 			},
 			html: {
 				files: ['www/index.html'],
@@ -51,11 +80,16 @@ module.exports = function(grunt) {
 			}
 		},
 
-		clean: ['bin-site']
+		clean: {
+			init: ['bin-site'],
+			dist: ['bin-site/**/*.tmp']
+		}
 	});
 
 	require('load-grunt-tasks')(grunt);
 
-	grunt.registerTask('dev', ['less', 'processhtml:dev', 'connect', 'watch']);
+	grunt.registerTask('dist', ['clean:init', 'less', 'ngtemplates', 'uglify', 'processhtml:dist', 'clean:dist']);
+
+	grunt.registerTask('dev', ['clean:init', 'less', 'processhtml:dev', 'connect', 'watch']);
 	grunt.registerTask('default', ['dev']);
 };
