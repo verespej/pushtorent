@@ -56,7 +56,7 @@ DbAccess.prototype.getVal = function(dbName, key) {
 	if (typeof(db[key]) === 'undefined') {
 		throw new Error('DB ' + dbName + ' doesn\'t contain an entry for ' + key);
 	}
-	return db[prop];
+	return db[key];
 };
 
 module.exports = DbAccess;

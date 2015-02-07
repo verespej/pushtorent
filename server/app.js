@@ -13,13 +13,18 @@ var dbs = new dba();
 
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/bin-site'));
+app.use(express.static(__dirname + '/bower_components'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var usersDbName = 'users';
 
-dbs.setDb(usersDbName, {});
+try {
+	dbs.getDb(usersDbName);
+} catch(err) {
+	dbs.setDb(usersDbName, {});
+}
 
 
 app.get('/test', function(req, res) {
@@ -36,7 +41,8 @@ app.get('/server/users/:id', function(req, res) {
 
 // Create user with given id
 app.post('/server/users/:id', function(req, res) {
-	console.log('Saving user ' + req.params.id + ': ' + req.body);
+	console.log(req);
+	console.log('Creating user ' + req.params.id + ': ' + req.body);
 	dbs.setVal(usersDbName, req.params.id, req.body);
 });
 

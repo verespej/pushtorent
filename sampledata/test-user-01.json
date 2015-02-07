@@ -1,0 +1,36 @@
+{
+	"fname": "Test",
+	"lname": "User",
+	"ssn": "123-45-6789",
+	"dob": "1990-01-01",
+	"phone": "555-555-5555",
+	"email": "testuser@pushtorent.com",
+	"address": "123 Residents St, Somewhere, WA"
+	"sex": "male",
+	"ethnicity": "non-hispanic",
+	"race": "white/other",
+	"lang": "en-US",
+	"needInterpreter": "no",
+	"claimDisability": "no",
+	"needAssistance": "no",
+	"specialFeatures": "no",
+	"whatFeatures": "N/A",
+	"assetsValue": "500USD",
+	"monthlyIncome": "1000USD",
+	"otherHouseholdMembers": [
+		{
+		}
+	],
+	"preferenceStatus": "extremely-low-income",
+	"currentEmployment": [
+		{
+			"name": "mom-n-pop-shop",
+			"address": "123 Retail St, Somewhere, WA"
+		}
+	],
+	"healthcare": [
+		{
+			"name": "physical-therapist"
+		}
+	]
+}
