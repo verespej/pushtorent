@@ -11,7 +11,6 @@ angular
 	])
 	.controller('PropertyDetailsCtrl', ['PropertyDetailsData', '$routeParams',
 		function(detailsData, routeParams) {
-			console.log(routeParams.id);
 			this.data = detailsData.get(routeParams.id);
 		}
 	]);
