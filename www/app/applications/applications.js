@@ -5,10 +5,19 @@ angular
 			$routeProvider.when('/applications', {
 				templateUrl: 'app/applications/applications.html',
 				controller: 'ApplicationCtrl',
-				controllerAs: 'application'
+				controllerAs: 'applications',
+				resolve: {
+					ApplicationList: ['ApplicationData',
+						function(applicationData) {
+							return applicationData.getAll();
+						}
+					]
+				}
 			});
 		}
 	])
-	.controller('ApplicationCtrl', [
-		function() {}
+	.controller('ApplicationCtrl', ['ApplicationList',
+		function(list) {
+			this.list = list;
+		}
 	]);

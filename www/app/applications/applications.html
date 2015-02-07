@@ -1,3 +1,23 @@
-<div class="application-page page">
-	<h1>Application Page</h1>
+<div class="properties-page">
+	<h1>Your applications</h1>
+	<p>List of places you have applied to</p>
+	<div class="row">
+		<div ng-repeat="application in applications.list" class="col-sm-6">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>{{application.property.name}}</h3>
+					<p>
+						{{application.status}}
+					</p>
+					<p>
+						{{application.property.desc}}
+					</p>
+					<p>
+						<a ng-href="#/property-details?id={{id}}" class="btn btn-primary" role="button">View details</a>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>

@@ -1,4 +1,20 @@
 <div class="properties-page">
-	Here are the list of properties
-	<a href="#/property-details">Property Details</a>
+	<h1>Properties</h1>
+	<p>Here are some properties that match your profile</p>
+	<div class="row">
+		<div ng-repeat="property in properties.list" class="col-sm-6">
+			<div class="thumbnail">
+				<img src="http://placehold.it/242x200" alt="...">
+				<div class="caption">
+					<h3>{{property.name}}</h3>
+					<p>
+						{{property.desc}}
+					</p>
+					<p>
+						<a ng-href="#/property-details?id={{property.id}}" class="btn btn-primary" role="button">View details</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
