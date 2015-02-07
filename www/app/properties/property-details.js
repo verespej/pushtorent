@@ -1,5 +1,5 @@
 angular
-	.module('property-details', ['ngRoute'])
+	.module('property-details', ['ngRoute', 'backend'])
 	.config(['$routeProvider',
 		function($routeProvider) {
 			$routeProvider.when('/property-details', {
@@ -9,6 +9,9 @@ angular
 			});
 		}
 	])
-	.controller('PropertyDetailsCtrl', [
-		function() {}
+	.controller('PropertyDetailsCtrl', ['PropertyDetailsData', '$routeParams',
+		function(detailsData, routeParams) {
+			console.log(routeParams.id);
+			this.data = detailsData.get(routeParams.id);
+		}
 	]);
