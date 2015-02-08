@@ -56,6 +56,6 @@ var config =
 			}
 
 			console.log('[%s] (%d) %s', from, db[from].current, respStr.join(''));
-			response.send('<Response>' + respStr.join('') + '</Response>');
+			response.send('<Response><Sms>' + respStr.join('') + '</Sms></Response>');
 		}
 	}
