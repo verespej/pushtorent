@@ -15,6 +15,7 @@ var haversine = require('haversine');
 
 var dbs = new dba();
 
+var sms = require('./sms');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(path.join(__dirname, '../bin-site')));
@@ -24,6 +25,8 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+app.get('/sms', sms.incomingSms);
+app.post('/sms', sms.incomingSms);
 
 var usersDbName = 'users';
 var propertiesDbName = 'properties';
