@@ -63,7 +63,12 @@ app.post('/server/users/:id', function(req, res) {
 // /server/properties?user={id}
 // Get properties list for a specific user
 app.get('/server/properties', function(req, res) {
-	var user = dbs.getVal(usersDbName, req.params.id);
+	var user = null;
+	try {
+		user = dbs.getVal(usersDbName, req.params.id);
+	} catch (err) {
+		user = JSON.parse(fs.readFileSync(__dirname + '/../sampledata/test-user-01.json'));
+	}
 
 	var selection = phdData.filter(function(item) {
 		// Find locations within 50 miles of current home
@@ -84,7 +89,7 @@ app.get('/server/properties', function(req, res) {
 			score: score
 		};
 	});
-	
+
 	res.send(selection);
 });
 
