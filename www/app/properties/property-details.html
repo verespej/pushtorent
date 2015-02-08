@@ -17,7 +17,7 @@
 			<td>Cost to Work:</td>
 			<td>{{propertyDetails.data.costToWork}}</td>
 		</tr>
-		<tr>
+<!-- 		<tr>
 			<td>Heath care services:</td>
 			<td>
 				<div ng-repeat="hc in propertyDetails.data.healthCareServices" >
@@ -48,8 +48,35 @@
 				<p>{{c.name}}: {{c.rate}}</p>
 				</div>
 			</td>
-		</tr>	
+		</tr>	 -->
 	</tbody>
 </table>
+<div class="row">
+	<div class="col-xs-12 col-md-4">
+		<div class="thumbnail">
+		<h4>Health care services</h4>
+			<p ng-repeat="hc in propertyDetails.data.healthCareServices">{{hc}}</p>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-4">
+		<div class="thumbnail">
+		<h4>Shopping</h4>
+			<p ng-repeat="s in propertyDetails.data.shopping">{{s}}</p>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-4">
+		<div class="thumbnail">
+		<h4>Schools</h4>
+			<p ng-repeat="ss in propertyDetails.data.schools">{{ss}}</p>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-4">
+		<div class="thumbnail">
+		<h4>Crime</h4>
+			<p ng-repeat="c in propertyDetails.data.crime">{{c.name}}: {{c.rate}}</p>
+		</div>
+	</div>
+</div>
+
 	<input type="button" value="Apply"/>
 </div>
