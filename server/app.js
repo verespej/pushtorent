@@ -9,6 +9,7 @@ var promise = require('bluebird');
 var bodyParser = require('body-parser');
 var dba = require('../modules/DbAccess');
 var path = require('path');
+var fs = require('fs');
 
 var dbs = new dba();
 
@@ -27,6 +28,18 @@ try {
 	dbs.getDb(usersDbName);
 } catch (err) {
 	dbs.setDb(usersDbName, {});
+}
+
+if (!fs.existsSync('server/datasets')) {
+	fs.mkdir('server/datasets');
+}
+if (!fs.existsSync('server/datasets/public-housing-developments.json')) {
+	// TODO: DL & save
+	// http://zillowhack.hud.opendata.arcgis.com/datasets/1cef73e2612f4cf7a46f8e40108d72bc_0.geojson
+}
+if (!fs.existsSync('server/datasets/multi-family-properties.json')) {
+	// TODO: DL & save
+	//'http://zillowhack.hud.opendata.arcgis.com/datasets/c55eb46fbc3b472cabd0c2a41f805261_0.geojson'
 }
 
 
