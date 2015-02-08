@@ -1,22 +1,45 @@
 .borderless td {
-    border: none;
-    width: 100px;
+	border: none;
+	width: 100px;
 }
-
-.jumbotron{
+.jumbotron {
 	background: none;
 }
-
 body {
 	padding-top: 70px;
 }
-
-.properties-page{
-	.listings{
-		.score{
-			h1{
-				border: SOLID 3px RED;
-			}
+.properties-page {
+	.listings {
+		hr {
+			margin: 5px -5px 10px;
+		}
+		.score {
+			width: 50px;
+			height: 50px;
+			margin-bottom: -50px;
+			transform: translate(10px, -10px);
+			border-radius: 50%;
+			text-align: center;
+			padding: 0.7em 0;
+			font-size: 1.2em;
+			float: right;
+		}
+	}
+}
+.applications-page {
+	.picture {
+		padding-left: 50px;
+	}
+	.status {
+		width: 0;
+		float: left;
+		margin: 0;
+		.alert {
+			margin: 0;
+			transform-origin: top left;
+			transform: translateY(200px) rotateZ(-90deg);
+			width: 200px;
+			text-align: center;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-<div class="properties-page">
+<div class="applications-page">
 	<div>
 		<a href="#/home" class="btn btn-default pull-right"> <i class="fa fa-angle-double-left"></i>
 			Go back
@@ -6,16 +6,16 @@
 		<h1>Application Status</h1>
 	</div>
 	<p>List of places you have applied to</p>
-	<div ng-repeat="application in applications.list">
-		<div class="thumbnail">
-			<div class="caption">
-				<h3>{{application.property.name}}</h3>
-				<p>{{application.status}}</p>
-				<p>{{application.property.desc}}</p>
-				<p>
-					<a ng-href="#/property-details?id={{id}}" class="btn btn-primary" role="button">View details</a>
-				</p>
-			</div>
+	<div class="media thumbnail" ng-repeat="application in applications.list" >
+		<div class="media-left status">
+			<div class="alert" ng-class="{'alert-warning':application.status_code===0, 'alert-danger':application.status_code===-1, 'alert-success':application.status_code==1}">{{application.status}}</div>
+		</div>
+		<div class="media-left picture">
+			<img class="media-object" ng-src="https://maps.googleapis.com/maps/api/streetview?size=200x200&location={{application.property.lat}},{{application.property.long}}"/>
+		</div>
+		<div class="media-body">
+			<h2 class="media-heading">{{application.property.name}}</h2>
+			{{application.property.desc}}
 		</div>
 	</div>
 </div>
