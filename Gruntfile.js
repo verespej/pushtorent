@@ -54,6 +54,15 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		copy: {
+			main: {
+				expand: true,
+				cwd: 'www/',
+				src: 'assets/**',
+				dest: 'bin-site/',
+			},
+		},
+
 		connect: {
 			proxies: [{
 				changeOrigin: false,
@@ -111,7 +120,7 @@ module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
 
-	grunt.registerTask('dist', ['clean:init', 'less', 'ngtemplates', 'uglify', 'processhtml:dist', 'clean:dist']);
+	grunt.registerTask('dist', ['clean:init', 'copy', 'less', 'ngtemplates', 'uglify', 'processhtml:dist', 'clean:dist']);
 
 	grunt.registerTask('dev', ['clean:init', 'less', 'processhtml:dev', 'configureProxies:server', 'connect:dev', 'watch']);
 	grunt.registerTask('default', ['dev']);
