@@ -5,7 +5,7 @@
 	"dob": "1990-01-01",
 	"phone": "555-555-5555",
 	"email": "testuser@pushtorent.com",
-	"address": "123 Residents St, Somewhere, WA"
+	"address": "123 Residents St, Somewhere, WA",
 	"sex": "male",
 	"ethnicity": "non-hispanic",
 	"race": "white/other",
@@ -18,13 +18,11 @@
 	"assetsValue": "500USD",
 	"monthlyIncome": "1000USD",
 	"otherHouseholdMembers": [
-		{
-		}
 	],
 	"preferenceStatus": "extremely-low-income",
 	"currentEmployment": [
 		{
-			"name": "mom-n-pop-shop",
+			"name": "Mom-n-pop Shop",
 			"address": "123 Retail St, Somewhere, WA"
 		}
 	],
