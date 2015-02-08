@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 				options: {
 					hostname: '*',
 					port: 9000,
-					base: ['test/res', 'bower_components', 'bin-site', 'www'],
+					base: ['bower_components', 'bin-site', 'www'],
 					livereload: true,
 					middleware: function(connect, options) {
 						var middlewares = [];
