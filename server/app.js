@@ -11,6 +11,7 @@ var dba = require('../modules/DbAccess');
 var path = require('path');
 var fs = require('fs');
 var http = require('http');
+var haversine = require('haversine');
 
 var dbs = new dba();
 
@@ -53,18 +54,38 @@ app.get('/server/users/:id', function(req, res) {
 // Create user with given id
 app.post('/server/users/:id', function(req, res) {
 	console.log('Creating user ' + req.params.id + ': ' + req.body);
+
+	// TODO: look up lat-long when user is submitted (or have it done on client side)
+
 	dbs.setVal(usersDbName, req.params.id, req.body);
 });
 
 // /server/properties?user={id}
 // Get properties list for a specific user
 app.get('/server/properties', function(req, res) {
-	var file = 'properties.json'
-	res.send(fs.readFileSync(__dirname + '/../sampledata/' + file));
-	//var userApps = dbs.getDb(propertiesDbName).filter(function(item) {
-	//	return item.id === req.query.user;
-	//});
-	//res.send(userApps);
+	var user = dbs.getVal(usersDbName, req.params.id);
+
+	var selection = phdData.filter(function(item) {
+		// Find locations within 50 miles of current home
+		var dist = haversine({ user.lat, user.long }, { item.lat, item.long });
+		return dist < 50 && item.availableUnits > 0;
+	}).map(function(item) {
+		var dist = haversine({ user.lat, user.long }, { item.lat, item.long });
+		var score = 
+			(0.8 * (1.0 - Math.max(cost/500.0, 1.0))) + 
+			(0.2 * (1.0 - dist/50.0));
+
+		return {
+			id: 'phd-' + val.properties.OBJECTID,
+			name: val.properties.PROJECT_NAME,
+			desc: 'A well-kept property located in the city. Good morning sun. Friendly neighbors and staff.'
+			lat: item.lat,
+			long: item.long,
+			score: score
+		};
+	});
+	
+	res.send(selection);
 });
 
 // Get details about property with given id
@@ -87,6 +108,7 @@ app.post('/server/properties/:id', function(req, res) {
 app.get('/server/applications', function(req, res) {
 	var file = 'applications.json'
 	res.send(fs.readFileSync(__dirname + '/../sampledata/' + file));
+	// TODO: Select properties for user from phdData
 	//var userApps = dbs.getDb(applicationsDbName).filter(function(item) {
 	//	return item.id === req.query.user;
 	//});
@@ -167,9 +189,11 @@ function getMfp() {
 
 
 function runServer() {
-	phdData = JSON.parse(fs.readFileSync(phdDataPath));
-	phdData = phdData.features.map(function(val) {
+	// TODO: Store in DB using propertiesDbName
+	var phdRawData = JSON.parse(fs.readFileSync(phdDataPath));
+	phdData = phdRawData.features.map(function(val) {
 		return {
+			id: 'phd-' + val.properties.OBJECTID,
 			name: val.properties.PROJECT_NAME,
 			address: val.properties.STD_ADDR + ', ' + 
 				val.STD_CITY + ', ' + 
@@ -178,7 +202,7 @@ function runServer() {
 			cost: val.properties.RENT_PER_MONTH,
 			availableUnits: val.properties.REGULAR_VACANT,
 			lat: val.properties.LAT,
-			lng: val.properties.LONG
+			long: val.properties.LONG
 		};
 	});
 

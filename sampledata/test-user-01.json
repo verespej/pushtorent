@@ -5,7 +5,11 @@
 	"dob": "1990-01-01",
 	"phone": "555-555-5555",
 	"email": "testuser@pushtorent.com",
-	"address": "123 Residents St, Somewhere, WA",
+	"address": {
+		"full": "1700 17th Ave, Seattle, WA",
+		"lat": 47.61686,
+		"long": -122.309771
+	},
 	"sex": "male",
 	"ethnicity": "non-hispanic",
 	"race": "white/other",
