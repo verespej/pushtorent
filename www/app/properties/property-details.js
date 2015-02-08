@@ -17,7 +17,7 @@ angular
 				self.data = data;
 			});
 
-			$scope.doApply = function() {
+			this.doApply = function() {
 				alert('You application has been sent to review. We will notify you as soon as a descision has been made');
 				$location.path('/home');
 			}
