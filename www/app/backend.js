@@ -26,8 +26,8 @@ angular
 	}])
 	.factory('RegisterUser', ['$http', function($http) {
 		return {
-			registerUser: function(data) {
-				console.log(JSON.stringfy(data));
+			put: function(data) {
+				console.log(JSON.stringify(data));
 			}
 		}
 	}]);

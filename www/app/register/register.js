@@ -11,6 +11,19 @@ angular
 	])
 	.controller('RegisterCtrl', ['RegisterUser', '$scope',
 		function(registerUser, $scope) {
-			registerUser.register($scope);
+			$scope.submit = function() {
+				registerUser.put({
+					phone: $scope.phone,
+					email: $scope.email,
+					password: $scope.password,
+					ssn: $scope.ssn,
+					income: $scope.income,
+					fname: $scope.fname,
+					lname: $scope.lname,
+					dob: $scope.dob,
+					address: $scope.address,
+					zip: $scope.zip
+				});
+			}
 		}
 	]);
