@@ -45,7 +45,7 @@ DbAccess.prototype.getDb = function(dbName) {
 
 DbAccess.prototype.setVal = function(dbName, key, val) {
 	if (typeof(this.dbs[dbName]) === 'undefined') {
-		this.dbs[Name] = {};
+		this.dbs[dbName] = {};
 	}
 	this.dbs[dbName][key] = val;
 	this.setDb(dbName, this.dbs[dbName]);
