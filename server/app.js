@@ -25,12 +25,17 @@ app.use(bodyParser.urlencoded({
 
 
 var usersDbName = 'users';
+var propertiesDbName = 'properties';
+var applicationsDbName = 'applications';
 
 try {
 	dbs.getDb(usersDbName);
 } catch (err) {
 	dbs.setDb(usersDbName, {});
 }
+
+
+var phdData = null;
 
 
 app.get('/test', function(req, res) {
@@ -55,35 +60,50 @@ app.post('/server/users/:id', function(req, res) {
 // Get properties list for a specific user
 app.get('/server/properties', function(req, res) {
 	var file = 'properties.json'
-	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
+	res.send(fs.readFileSync(__dirname + '/../sampledata/' + file));
+	//var userApps = dbs.getDb(propertiesDbName).filter(function(item) {
+	//	return item.id === req.query.user;
+	//});
+	//res.send(userApps);
 });
 
 // Get details about property with given id
 app.get('/server/properties/:id', function(req, res) {
 	var file = 'property-details.json'
-	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
+	res.send(fs.readFileSync(__dirname + '/../sampledata/' + file));
+	//console.log('Getting user ' + req.params.id);
+	//var user = dbs.getVal(usersDbName, req.params.id);
+	//res.send(user);
 });
 
 // Create details about property with given id
 app.post('/server/properties/:id', function(req, res) {
-	res.status(501).send('Not implemented');
+	console.log('Creating property ' + req.params.id + ': ' + req.body);
+	dbs.setVal(propertiesDbName, req.params.id, req.body);
 });
 
 // Get all applications for a specific user
 // /server/applications?user={id}
 app.get('/server/applications', function(req, res) {
 	var file = 'applications.json'
-	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
+	res.send(fs.readFileSync(__dirname + '/../sampledata/' + file));
+	//var userApps = dbs.getDb(applicationsDbName).filter(function(item) {
+	//	return item.id === req.query.user;
+	//});
+	//res.send(userApps);
 });
 
 // Get an application with given id
 app.get('/server/applications/:id', function(req, res) {
-	res.status(501).send('Not implemented');
+	console.log('Getting application ' + req.params.id);
+	var application = dbs.getVal(applicationsDbName, req.params.id);
+	res.send(application);
 });
 
 // Create an application with given id
 app.post('/server/applications/:id', function(req, res) {
-	res.status(501).send('Not implemented');
+	console.log('Creating application ' + req.params.id + ': ' + req.body);
+	dbs.setVal(applicationsDbName, req.params.id, req.body);
 });
 
 
@@ -102,7 +122,7 @@ if (!fs.existsSync(datasetsDirPath)) {
 var phdDataPath = path.join(datasetsDirPath, 'public-housing-developments.json');
 if (!fs.existsSync(phdDataPath)) {
 	reqOpts.path = '/datasets/1cef73e2612f4cf7a46f8e40108d72bc_0.geojson';
-	console.log('Getting file ' + reqOpts.path);
+	console.log('Getting file ' + reqOpts.path + '...');
 	var req = http.get(reqOpts, function(res) {
 		res.on('data', function(chunk) {
 			fs.appendFileSync(phdDataPath, chunk);
@@ -125,7 +145,7 @@ function getMfp() {
 	var mfpDataPath = path.join(datasetsDirPath, 'multi-family-properties.json');
 	if (!fs.existsSync(mfpDataPath)) {
 		reqOpts.path = '/datasets/c55eb46fbc3b472cabd0c2a41f805261_0.geojson';
-		console.log('Getting file ' + reqOpts.path);
+		console.log('Getting file ' + reqOpts.path + '...');
 		var req = http.get(reqOpts, function(res) {
 			res.on('data', function(chunk) {
 				fs.appendFileSync(mfpDataPath, chunk);
@@ -147,6 +167,21 @@ function getMfp() {
 
 
 function runServer() {
+	phdData = JSON.parse(fs.readFileSync(phdDataPath));
+	phdData = phdData.features.map(function(val) {
+		return {
+			name: val.properties.PROJECT_NAME,
+			address: val.properties.STD_ADDR + ', ' + 
+				val.STD_CITY + ', ' + 
+				val.STD_ST + ' ' + 
+				val.STD_ZIP5,
+			cost: val.properties.RENT_PER_MONTH,
+			availableUnits: val.properties.REGULAR_VACANT,
+			lat: val.properties.LAT,
+			lng: val.properties.LONG
+		};
+	});
+
 	app.listen(app.get('port'), function() {
 		console.log('Listening on port ' + app.get('port'));
 	});
