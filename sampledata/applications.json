@@ -1,0 +1,101 @@
+[{
+  "id": 0,
+  "property": {
+    "id": 0,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 1,
+  "property": {
+    "id": 1,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 2,
+  "property": {
+    "id": 2,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 3,
+  "property": {
+    "id": 3,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 4,
+  "property": {
+    "id": 4,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 5,
+  "property": {
+    "id": 5,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 6,
+  "property": {
+    "id": 6,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 7,
+  "property": {
+    "id": 7,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 8,
+  "property": {
+    "id": 8,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}, {
+  "id": 9,
+  "property": {
+    "id": 9,
+    "name": "NAME",
+    "desc": "description",
+    "img": "http://placehold.it/242x200",
+    "score": "100"
+  },
+  "status": "underReview"
+}]

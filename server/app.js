@@ -51,37 +51,14 @@ app.post('/server/users/:id', function(req, res) {
 // /server/properties?user={id}
 // Get properties list for a specific user
 app.get('/server/properties', function(req, res) {
-	var data = [];
-	for (var i = 0; i < 10; i++) {
-		data.push({
-			id: i,
-			name: 'NAME',
-			desc: 'description',
-			img: 'http://placehold.it/242x200',
-			score: '100'
-		});
-	}
-	res.send(data);
+	var file = 'properties.json'
+	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
 });
 
 // Get details about property with given id
 app.get('/server/properties/:id', function(req, res) {
-	res.send({
-		id: 1000,
-		name: 'NAME',
-		desc: 'description',
-		costToWork: 'costToWork',
-		healthCareServices: ['hc1', 'hc2'],
-		shopping: ['store1', 'store2'],
-		schools: ['school1', 'school2'],
-		crime: [{
-			name: 'robbery',
-			rate: 'rate'
-		}, {
-			name: 'breakins',
-			rate: 'rate'
-		}]
-	})
+	var file = 'properties.json'
+	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
 });
 
 // Create details about property with given id
@@ -92,21 +69,8 @@ app.post('/server/properties/:id', function(req, res) {
 // Get all applications for a specific user
 // /server/applications?user={id}
 app.get('/server/applications', function(req, res) {
-	var data = [];
-	for (var i = 0; i < 10; i++) {
-		data.push({
-			id: i,
-			property: {
-				id: i,
-				name: 'NAME',
-				desc: 'description',
-				img: 'http://placehold.it/242x200',
-				score: '100'
-			},
-			status: 'underReview'
-		});
-	}
-	res.send(data);
+	var file = 'applications.json'
+	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
 });
 
 // Get an application with given id
