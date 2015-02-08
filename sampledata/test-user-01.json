@@ -19,8 +19,8 @@
 	"needAssistance": "no",
 	"specialFeatures": "no",
 	"whatFeatures": "N/A",
-	"assetsValue": "500USD",
-	"monthlyIncome": "1000USD",
+	"assetsValue": 500,
+	"monthlyIncome": 1000,
 	"otherHouseholdMembers": [
 	],
 	"preferenceStatus": "extremely-low-income",

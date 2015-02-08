@@ -66,13 +66,19 @@ app.post('/server/users/:id', function(req, res) {
 // /server/properties?user={id}
 // Get properties list for a specific user
 app.get('/server/properties', function(req, res) {
+	console.log('Listing properties for user ' + req.params.id);
+
 	var user = null;
 	try {
 		user = dbs.getVal(usersDbName, req.params.id);
 	} catch (err) {
 		user = JSON.parse(fs.readFileSync(__dirname + '/../sampledata/test-user-01.json'));
 	}
-	console.log(user);
+
+	var minCost = user.monthlyIncome / 4.0;
+	var maxCost = user.monthlyIncome / 2.0;
+	var costRange = maxCost - minCost;
+
 	var selection = phdData.filter(function(item) {
 		// Find locations within 50 miles of current home
 		var userLoc = {
@@ -84,8 +90,7 @@ app.get('/server/properties', function(req, res) {
 			longitude: item.long
 		};
 		var dist = haversine(userLoc, propertyLoc);
-		console.log('user: ' + JSON.stringify(userLoc) + ', prop: ' + JSON.stringify(propertyLoc));
-		return dist < 25 && item.availableUnits > 0;
+		return dist < 25 && item.availableUnits > 0 && item.cost <= maxCost;
 	}).map(function(item) {
 		var dist = haversine({
 			latitude: user.address.lat,
@@ -94,9 +99,15 @@ app.get('/server/properties', function(req, res) {
 			latitude: item.lat,
 			longitude: item.long
 		});
-		var score =
-			(0.8 * (1.0 - Math.max(item.cost / 500.0, 1.0))) +
-			(0.2 * (1.0 - dist / 25.0));
+
+		var normalizedCost = Math.max(item.cost - minCost, 0.0);
+		var costFactor = normalizedCost / costRange;
+		var score = Math.round(
+			100.0 *
+			(0.8 * (1.0 - costFactor)) +
+			(0.2 * (1.0 - dist / 25.0))
+		);
+		console.log('cost: ' + item.cost + ', min: ' + minCost + ', max: ' + maxCost + ', range: ' + costRange + ', norm' + normalizedCost + ', factor: ' + costFactor + ', dist: ' + dist + ', score: ' + score);
 		return {
 			id: item.id,
 			name: item.name,
@@ -129,7 +140,7 @@ app.get('/server/properties/:id', function(req, res) {
 		id: property.id,
 		name: property.name,
 		desc: property.desc,
-		costToWork: '$3USD - bus',
+		costToWork: '$3 - bus',
 		healthCareServices: [
 			'Virginia Mason Medical Center Psychiatry and Psychology',
 			'Virginia Mason Hospital',
