@@ -1,101 +1,121 @@
 [{
+  "status": "Approved",
+  "status_code": 1,
   "id": 0,
   "property": {
     "id": 0,
-    "name": "NAME",
+    "name": "NAME 0",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.68409",
+    "long": "-122.32245",
+    "score": 100
+  }
 }, {
+  "status": "Rejected",
+  "status_code": -1,
   "id": 1,
   "property": {
     "id": 1,
-    "name": "NAME",
+    "name": "NAME 1",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.61130",
+    "long": "-122.31208",
+    "score": 100
+  }
 }, {
+  "status": "Processing",
+  "status_code": 0,
   "id": 2,
   "property": {
     "id": 2,
-    "name": "NAME",
+    "name": "NAME 2",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.62246",
+    "long": "-122.38407",
+    "score": 100
+  }
 }, {
+  "status": "Processing",
+  "status_code": 0,
   "id": 3,
   "property": {
     "id": 3,
-    "name": "NAME",
+    "name": "NAME 3",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.66764",
+    "long": "-122.36723",
+    "score": 100
+  }
 }, {
+  "status": "Accepted",
+  "status_code": 1,
   "id": 4,
   "property": {
     "id": 4,
-    "name": "NAME",
+    "name": "NAME 4",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.63458",
+    "long": "-122.34132",
+    "score": 100
+  }
 }, {
+  "status": "Rejected",
+  "status_code": -1,
   "id": 5,
   "property": {
     "id": 5,
-    "name": "NAME",
+    "name": "NAME 5",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.67857",
+    "long": "-122.32103",
+    "score": 100
+  }
 }, {
+  "status": "Under Review",
+  "status_code": 1,
   "id": 6,
   "property": {
     "id": 6,
-    "name": "NAME",
+    "name": "NAME 6",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.65151",
+    "long": "-122.36978",
+    "score": 100
+  }
 }, {
+  "status": "Under Review",
+  "status_code": 1,
   "id": 7,
   "property": {
     "id": 7,
-    "name": "NAME",
+    "name": "NAME 7",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.64699",
+    "long": "-122.3388",
+    "score": 100
+  }
 }, {
+  "status": "Under Review",
+  "status_code": 1,
   "id": 8,
   "property": {
     "id": 8,
-    "name": "NAME",
+    "name": "NAME 8",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.68496",
+    "long": "-122.35681",
+    "score": 100
+  }
 }, {
+  "status": "Under Review",
+  "status_code": 1,
   "id": 9,
   "property": {
     "id": 9,
-    "name": "NAME",
+    "name": "NAME 9",
     "desc": "description",
-    "img": "http://placehold.it/242x200",
-    "score": "100"
-  },
-  "status": "underReview"
+    "lat": "47.64518",
+    "long": "-122.37156",
+    "score": 100
+  }
 }]

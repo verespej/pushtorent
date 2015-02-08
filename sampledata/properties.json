@@ -13,7 +13,7 @@
     "desc": "description",
     "lat": "47.68433",
     "long": "-122.34255",
-    "score": 100
+    "score": 86
   },
   {
     "id": 0,
@@ -21,7 +21,7 @@
     "desc": "description",
     "lat": "47.69412",
     "long": "-122.33703",
-    "score": 100
+    "score": 34
   },
   {
     "id": 0,
@@ -29,7 +29,7 @@
     "desc": "description",
     "lat": "47.68736",
     "long": "-122.36919",
-    "score": 100
+    "score": 54
   },
   {
     "id": 0,
@@ -37,7 +37,7 @@
     "desc": "description",
     "lat": "47.63738",
     "long": "-122.3817",
-    "score": 100
+    "score": 78
   },
   {
     "id": 0,
@@ -61,7 +61,7 @@
     "desc": "description",
     "lat": "47.68731",
     "long": "-122.32537",
-    "score": 100
+    "score": 12
   },
   {
     "id": 0,
@@ -69,7 +69,7 @@
     "desc": "description",
     "lat": "47.69689",
     "long": "-122.37590",
-    "score": 100
+    "score": 98
   },
   {
     "id": 0,
@@ -77,6 +77,6 @@
     "desc": "description",
     "lat": "47.69103",
     "long": "-122.36274",
-    "score": 100
+    "score": 65
   }
 ]
