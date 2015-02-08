@@ -180,7 +180,10 @@ if (!fs.existsSync(phdDataPath)) {
 }
 
 function getMfp() {
-	var mfpDataPath = path.join(datasetsDirPath, 'multi-family-properties.json');
+	runServer();
+
+	// Don't need this at the moment, so don't download - it's aroudn 120MB
+	/*var mfpDataPath = path.join(datasetsDirPath, 'multi-family-properties.json');
 	if (!fs.existsSync(mfpDataPath)) {
 		reqOpts.path = '/datasets/c55eb46fbc3b472cabd0c2a41f805261_0.geojson';
 		console.log('Getting file ' + reqOpts.path + '...');
@@ -200,7 +203,7 @@ function getMfp() {
 		req.end();
 	} else {
 		runServer();
-	}
+	}*/
 }
 
 
