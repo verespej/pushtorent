@@ -69,31 +69,34 @@ app.get('/server/properties', function(req, res) {
 	} catch (err) {
 		user = JSON.parse(fs.readFileSync(__dirname + '/../sampledata/test-user-01.json'));
 	}
+	console.log(user);
 	var selection = phdData.filter(function(item) {
 		// Find locations within 50 miles of current home
-		var dist = haversine({
-			latitude: user.lat,
-			longitude: user.long
-		}, {
+		var userLoc = {
+			latitude: user.address.lat,
+			longitude: user.address.long
+		};
+		var propertyLoc = {
 			latitude: item.lat,
 			longitude: item.long
-		});
+		};
+		var dist = haversine(userLoc, propertyLoc);
+		console.log('user: ' + JSON.stringify(userLoc) + ', prop: ' + JSON.stringify(propertyLoc));
 		return dist < 50 && item.availableUnits > 0;
 	}).map(function(item) {
 		var dist = haversine({
-			latitude: user.lat,
-			longitude: user.long
+			latitude: user.address.lat,
+			longitude: user.address.long
 		}, {
 			latitude: item.lat,
 			longitude: item.long
 		});
 		var score =
-			(0.8 * (1.0 - Math.max(cost / 500.0, 1.0))) +
+			(0.8 * (1.0 - Math.max(item.cost / 500.0, 1.0))) +
 			(0.2 * (1.0 - dist / 50.0));
-
 		return {
-			id: 'phd-' + val.properties.OBJECTID,
-			name: val.properties.PROJECT_NAME,
+			id: item.id,
+			name: item.name,
 			desc: 'A well-kept property located in the city. Good morning sun. Friendly neighbors and staff.',
 			lat: item.lat,
 			long: item.long,
@@ -221,7 +224,7 @@ function runServer() {
 			cost: val.properties.RENT_PER_MONTH,
 			availableUnits: val.properties.REGULAR_VACANT,
 			lat: val.properties.LAT,
-			long: val.properties.LONG
+			long: val.properties.LON
 		};
 	});
 
