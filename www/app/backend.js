@@ -9,7 +9,7 @@ angular
 			},
 
 			getDetails: function(id) {
-				return $http.get('/server/properties/id').then(function(res) {
+				return $http.get('/server/properties/' + id).then(function(res) {
 					return res.data;
 				});
 			},

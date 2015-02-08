@@ -1,82 +1,84 @@
 <div class="property-details-page">
+	<a href="#/home" class="btn btn-default pull-right"> <i class="fa fa-angle-double-left"></i>
+		Go back
+	</a>
 	<h1>Property details</h1>
-	<a href="#/properties">Go back to list</a>
+	<hr/>
+	<div class="well">
+		<h3>
+			<dl class="dl-horizontal">
+				<dt>Name</dt>
+				<dd>
+					{{propertyDetails.data.name}}( <em>{{propertyDetails.data.id}}</em>
+					)
+				</dd>
+				<dt>Decription</dt>
+				<dd>{{propertyDetails.data.desc}}</dd>
+				<dt>Cost to Work</dt>
+				<dd>{{propertyDetails.data.costToWork}}</dd>
+			</dl>
+		</h3>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading"> <i class="fa fa-stethoscope"></i>
+					Health care services
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li ng-repeat="hc in propertyDetails.data.healthCareServices">{{hc}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-shopping-cart"></i>
+					Shopping
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li ng-repeat="s in propertyDetails.data.shopping">{{s}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-book"></i>
+					Schools
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li ng-repeat="ss in propertyDetails.data.schools">{{ss}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-unlock"></i>
+					Crime
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li ng-repeat="s in propertyDetails.data.shopping">{{s}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<table class="borderless">
-
-	<tbody>
-		<tr>
-			<td>Name:</td>
-			<td>{{propertyDetails.data.name}}({{propertyDetails.data.id}})</td>
-		</tr>
-		<tr>
-			<td>Decription:</td>
-			<td>{{propertyDetails.data.desc}}</td>
-		</tr>
-		<tr>
-			<td>Cost to Work:</td>
-			<td>{{propertyDetails.data.costToWork}}</td>
-		</tr>
-<!-- 		<tr>
-			<td>Heath care services:</td>
-			<td>
-				<div ng-repeat="hc in propertyDetails.data.healthCareServices" >
-				<p>{{hc}}</p>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>Shopping:</td>
-			<td>
-				<div ng-repeat="s in propertyDetails.data.shopping" >
-				<p>{{s}}</p>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>Schools:</td>
-			<td>
-				<div ng-repeat="ss in propertyDetails.data.schools" >
-				<p>{{ss}}</p>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>Crime:</td>
-			<td>
-				<div ng-repeat="c in propertyDetails.data.crime" >
-				<p>{{c.name}}: {{c.rate}}</p>
-				</div>
-			</td>
-		</tr>	 -->
-	</tbody>
-</table>
-<div class="row">
-	<div class="col-xs-12 col-md-4">
-		<div class="thumbnail">
-		<h4>Health care services</h4>
-			<p ng-repeat="hc in propertyDetails.data.healthCareServices">{{hc}}</p>
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-large btn-primary">
+				<i class="fa fa-pencil-square-o"></i>
+				Apply for this property
+			</button>
 		</div>
 	</div>
-	<div class="col-xs-12 col-md-4">
-		<div class="thumbnail">
-		<h4>Shopping</h4>
-			<p ng-repeat="s in propertyDetails.data.shopping">{{s}}</p>
-		</div>
-	</div>
-	<div class="col-xs-12 col-md-4">
-		<div class="thumbnail">
-		<h4>Schools</h4>
-			<p ng-repeat="ss in propertyDetails.data.schools">{{ss}}</p>
-		</div>
-	</div>
-	<div class="col-xs-12 col-md-4">
-		<div class="thumbnail">
-		<h4>Crime</h4>
-			<p ng-repeat="c in propertyDetails.data.crime">{{c.name}}: {{c.rate}}</p>
-		</div>
-	</div>
-</div>
-
-	<input type="button" value="Apply"/>
 </div>

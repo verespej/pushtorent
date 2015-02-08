@@ -13,6 +13,7 @@ angular
 		function(propertyData, routeParams) {
 			var self = this;
 			propertyData.getDetails(routeParams.id).then(function(data) {
+				console.log(data);
 				self.data = data;
 			});
 		}

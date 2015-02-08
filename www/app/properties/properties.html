@@ -9,12 +9,16 @@
 	<div class="row listings">
 		<div ng-repeat="property in properties.list" class="col-sm-6">
 			<div class="thumbnail">
-				<div class="score alert" ng-class="{'alert-success': property.score>80,'alert-warning': property.score <= 80 && property.score>30,'alert-danger': property.score<=30}">{{property.score}}</div>
+				<div class="score alert" ng-class="{
+					'alert-success': 80 < property.score, 
+					'alert-warning': property.score <= 80 && 30 < property.score,
+					'alert-danger': property.score <=30}">{{property.score}}</div>
 				<img ng-src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location={{property.lat}},{{property.long}}"/>
 				<div>
-				<hr/>
+					<hr/>
 					<h4 class="media-heading">{{property.name}}</h4>
 					<p>{{property.desc}}</p>
+					<a ng-href="#/property-details?id={{property.id}}">View details <i class="fa fa-angle-double-right"></i></a>
 				</div>
 			</div>
 		</div>

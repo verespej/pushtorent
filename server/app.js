@@ -70,7 +70,7 @@ app.get('/server/properties', function(req, res) {
 
 // Get details about property with given id
 app.get('/server/properties/:id', function(req, res) {
-	var file = 'properties.json'
+	var file = 'property-details.json'
 	res.send(require('fs').readFileSync(__dirname + '/../sampledata/' + file));
 });
 
