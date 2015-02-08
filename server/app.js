@@ -154,7 +154,7 @@ var reqOpts = {
 };
 
 if (!fs.existsSync(datasetsDirPath)) {
-	fs.mkdir(datasetsDirPath);
+	fs.mkdirSync(datasetsDirPath);
 }
 
 var phdDataPath = path.join(datasetsDirPath, 'public-housing-developments.json');
