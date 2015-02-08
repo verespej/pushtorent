@@ -1,0 +1,3 @@
+curl -v -X POST -d @test-user-01.json http://127.0.0.1:5000/server/users/testuser -H "Connection: close" -H "Content-Type: application/json"
+
+

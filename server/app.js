@@ -8,13 +8,14 @@ var app = express();
 var promise = require('bluebird');
 var bodyParser = require('body-parser');
 var dba = require('../modules/DbAccess');
+var path = require('path');
 
 var dbs = new dba();
 
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/bin-site'));
-app.use(express.static(__dirname + '/bower_components'));
+app.use(express.static(path.join(__dirname, '../bin-site')));
+app.use(express.static(path.join(__dirname, '../bower_components')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -41,7 +42,6 @@ app.get('/server/users/:id', function(req, res) {
 
 // Create user with given id
 app.post('/server/users/:id', function(req, res) {
-	console.log(req);
 	console.log('Creating user ' + req.params.id + ': ' + req.body);
 	dbs.setVal(usersDbName, req.params.id, req.body);
 });
