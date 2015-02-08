@@ -107,7 +107,6 @@ app.get('/server/properties', function(req, res) {
 			(0.8 * (1.0 - costFactor)) +
 			(0.2 * (1.0 - dist / 25.0))
 		);
-		console.log('cost: ' + item.cost + ', min: ' + minCost + ', max: ' + maxCost + ', range: ' + costRange + ', norm' + normalizedCost + ', factor: ' + costFactor + ', dist: ' + dist + ', score: ' + score);
 		return {
 			id: item.id,
 			name: item.name,
