@@ -1,5 +1,5 @@
 angular
-	.module('register', ['ngRoute'])
+	.module('register', ['ngRoute', 'backend'])
 	.config(['$routeProvider',
 		function($routeProvider) {
 			$routeProvider.when('/register', {
@@ -9,6 +9,8 @@ angular
 			});
 		}
 	])
-	.controller('RegisterCtrl', [
-		function() {}
+	.controller('RegisterCtrl', ['RegisterUser', '$scope',
+		function(registerUser, $scope) {
+			registerUser.register($scope);
+		}
 	]);

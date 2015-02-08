@@ -23,4 +23,11 @@ angular
 				});
 			}
 		}
+	}])
+	.factory('RegisterUser', ['$http', function($http) {
+		return {
+			registerUser: function(data) {
+				console.log(JSON.stringfy(data));
+			}
+		}
 	}]);
