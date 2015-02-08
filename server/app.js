@@ -82,7 +82,7 @@ app.get('/server/properties', function(req, res) {
 		};
 		var dist = haversine(userLoc, propertyLoc);
 		console.log('user: ' + JSON.stringify(userLoc) + ', prop: ' + JSON.stringify(propertyLoc));
-		return dist < 50 && item.availableUnits > 0;
+		return dist < 25 && item.availableUnits > 0;
 	}).map(function(item) {
 		var dist = haversine({
 			latitude: user.address.lat,
@@ -93,11 +93,11 @@ app.get('/server/properties', function(req, res) {
 		});
 		var score =
 			(0.8 * (1.0 - Math.max(item.cost / 500.0, 1.0))) +
-			(0.2 * (1.0 - dist / 50.0));
+			(0.2 * (1.0 - dist / 25.0));
 		return {
 			id: item.id,
 			name: item.name,
-			desc: 'A well-kept property located in the city. Good morning sun. Friendly neighbors and staff.',
+			desc: item.desc,
 			lat: item.lat,
 			long: item.long,
 			score: score
@@ -109,11 +109,46 @@ app.get('/server/properties', function(req, res) {
 
 // Get details about property with given id
 app.get('/server/properties/:id', function(req, res) {
-	var file = 'property-details.json'
-	res.send(fs.readFileSync(__dirname + '/../sampledata/' + file));
-	//console.log('Getting user ' + req.params.id);
-	//var user = dbs.getVal(usersDbName, req.params.id);
-	//res.send(user);
+	console.log('Getting user ' + req.params.id);
+
+	var property = null;
+	for (var i = 0; i < phdData.length; i++) {
+		if (req.params.id === phdData[i].id) {
+			property = phdData[i];
+		}
+	}
+
+	if (property === null) {
+		var property = JSON.parse(fs.readFileSync(__dirname + '/../sampledata/property-details.json'));
+	}
+
+	res.send({
+		id: property.id,
+		name: property.name,
+		desc: property.desc,
+		costToWork: '$3USD - bus',
+		healthCareServices: [
+			'Virginia Mason Medical Center Psychiatry and Psychology',
+			'Virginia Mason Hospital',
+			'Core Physical Therapy',
+			'Walgreens Pharmacy'
+		],
+		shopping: [
+			'QFC',
+			'Safeway',
+			'Walgreens'
+		],
+		schools: [
+			'Bailey Gatzert Elementary School',
+			'Garfield High School'
+		],
+		crime: [
+			{
+				'name': 'breakins',
+				'rate': '1.7/yr'
+			}
+		]
+	});
 });
 
 // Create details about property with given id
@@ -222,6 +257,7 @@ function runServer() {
 				val.STD_ST + ' ' +
 				val.STD_ZIP5,
 			cost: val.properties.RENT_PER_MONTH,
+			desc: 'A well-kept property located in the city. Good morning sun. Friendly neighbors and staff.',
 			availableUnits: val.properties.REGULAR_VACANT,
 			lat: val.properties.LAT,
 			long: val.properties.LON
