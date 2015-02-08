@@ -9,8 +9,8 @@ angular
 			});
 		}
 	])
-	.controller('RegisterCtrl', ['RegisterUser', '$scope',
-		function(registerUser, $scope) {
+	.controller('RegisterCtrl', ['RegisterUser', '$scope', '$location',
+		function(registerUser, $scope, $location) {
 			$scope.submit = function() {
 				registerUser.put({
 					phone: $scope.phone,
@@ -24,6 +24,8 @@ angular
 					address: $scope.address,
 					zip: $scope.zip
 				});
+
+				$location.path('/home');
 			}
 		}
 	]);

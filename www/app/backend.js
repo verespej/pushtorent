@@ -30,4 +30,11 @@ angular
 				console.log(JSON.stringify(data));
 			}
 		}
+	}]).factory('LoginUser', ['$http', function($http) {
+		return {
+			put: function(data) {
+				console.log(JSON.stringify(data));
+				return true;
+			}
+		}
 	}]);
