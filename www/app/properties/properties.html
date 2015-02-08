@@ -11,7 +11,7 @@
 			<div class="thumbnail">
 				<div class="score alert" ng-class="{
 					'alert-success': 70 < property.score, 
-					'alert-warning': property.score <= 80 && 30 < property.score,
+					'alert-warning': property.score <= 70 && 30 < property.score,
 					'alert-danger': property.score <=30}">{{property.score}}</div>
 				<img ng-src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location={{property.lat}},{{property.long}}"/>
 				<div>
