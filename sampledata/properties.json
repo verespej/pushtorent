@@ -1,61 +1,82 @@
-[{
-	"id": 0,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 1,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 2,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 3,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 4,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 5,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 6,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 7,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 8,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}, {
-	"id": 9,
-	"name": "NAME",
-	"desc": "description",
-	"img": "http://placehold.it/242x200",
-	"score": 100
-}]
+[
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.67478",
+    "long": "-122.37845",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.68433",
+    "long": "-122.34255",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.69412",
+    "long": "-122.33703",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.68736",
+    "long": "-122.36919",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.63738",
+    "long": "-122.3817",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.64493",
+    "long": "-122.33623",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.65776",
+    "long": "-122.3643",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.68731",
+    "long": "-122.32537",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.69689",
+    "long": "-122.37590",
+    "score": 100
+  },
+  {
+    "id": 0,
+    "name": "NAME 1",
+    "desc": "description",
+    "lat": "47.69103",
+    "long": "-122.36274",
+    "score": 100
+  }
+]
