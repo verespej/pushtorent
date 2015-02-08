@@ -17,13 +17,15 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(path.join(__dirname, '../bin-site')));
 app.use(express.static(path.join(__dirname, '../bower_components')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 
 var usersDbName = 'users';
 
 try {
 	dbs.getDb(usersDbName);
-} catch(err) {
+} catch (err) {
 	dbs.setDb(usersDbName, {});
 }
 
@@ -64,11 +66,26 @@ app.get('/server/properties', function(req, res) {
 
 // Get details about property with given id
 app.get('/server/properties/:id', function(req, res) {
-	res.status(501).send('Not implemented');
+	res.send({
+		id: 1000,
+		name: 'NAME',
+		desc: 'description',
+		costToWork: 'costToWork',
+		healthCareServices: ['hc1', 'hc2'],
+		shopping: ['store1', 'store2'],
+		schools: ['school1', 'school2'],
+		crime: [{
+			name: 'robbery',
+			rate: 'rate'
+		}, {
+			name: 'breakins',
+			rate: 'rate'
+		}]
+	})
 });
 
 // Create details about property with given id
-app.set('/server/properties/:id', function(req, res) {
+app.post('/server/properties/:id', function(req, res) {
 	res.status(501).send('Not implemented');
 });
 
@@ -106,4 +123,3 @@ app.post('/server/applications/:id', function(req, res) {
 app.listen(app.get('port'), function() {
 	console.log('Listening on port ' + app.get('port'));
 });
-

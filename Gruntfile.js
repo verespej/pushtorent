@@ -9,10 +9,13 @@ module.exports = function(grunt) {
 		},
 
 		ngtemplates: {
-			tempCache: {
+			dist: {
 				cwd: 'www',
 				src: 'app/**/*.html',
 				dest: 'bin-site/tempCache.js.tmp'
+			},
+			options: {
+				module: 'pushtorent'
 			}
 		},
 		uglify: {
@@ -21,7 +24,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'bin-site/main.min.js': ['bin-site/tempCache.js.tmp', 'www/app/**/*.js']
+					'bin-site/main.min.js': ['www/app/**/*.js', 'bin-site/tempCache.js.tmp']
 				}
 			}
 		},
@@ -52,12 +55,32 @@ module.exports = function(grunt) {
 			}
 		},
 		connect: {
+			proxies: [{
+				changeOrigin: false,
+				host: 'localhost',
+				port: '5000',
+				context: '/server',
+				rewrite: {
+					'server': 'server'
+				}
+			}],
 			dev: {
 				options: {
 					hostname: '*',
 					port: 9000,
-					base: ['bower_components', 'bin-site', 'www'],
+					base: ['test/res', 'bower_components', 'bin-site', 'www'],
 					livereload: true,
+					middleware: function(connect, options) {
+						var middlewares = [];
+						if (!Array.isArray(options.base)) {
+							options.base = [options.base];
+						}
+						middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+						options.base.forEach(function(base) {
+							middlewares.push(connect.static(base));
+						});
+						return middlewares;
+					},
 					useAvailablePort: true,
 				}
 			}
@@ -90,6 +113,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('dist', ['clean:init', 'less', 'ngtemplates', 'uglify', 'processhtml:dist', 'clean:dist']);
 
-	grunt.registerTask('dev', ['clean:init', 'less', 'processhtml:dev', 'connect', 'watch']);
+	grunt.registerTask('dev', ['clean:init', 'less', 'processhtml:dev', 'configureProxies:server', 'connect:dev', 'watch']);
 	grunt.registerTask('default', ['dev']);
 };

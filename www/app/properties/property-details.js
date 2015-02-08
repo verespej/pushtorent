@@ -9,8 +9,11 @@ angular
 			});
 		}
 	])
-	.controller('PropertyDetailsCtrl', ['PropertyDetailsData', '$routeParams',
-		function(detailsData, routeParams) {
-			this.data = detailsData.get(routeParams.id);
+	.controller('PropertyDetailsCtrl', ['PropertyData', '$routeParams',
+		function(propertyData, routeParams) {
+			var self = this;
+			propertyData.getDetails(routeParams.id).then(function(data) {
+				self.data = data;
+			});
 		}
 	]);
