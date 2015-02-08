@@ -1,26 +1,55 @@
 <div class="property-details-page">
 	<h1>Property details</h1>
 	<a href="#/properties">Go back to list</a>
-	<p>Id: {{propertyDetails.data.id}}</p>
-	<p>Name: {{propertyDetails.data.name}}</p>
-	<p>Desciption: {{propertyDetails.data.desc}}</p>
-	<p>Cost to Work: {{propertyDetails.data.costToWork}}</p>
-	<p>Heath care services</p>
-	<div ng-repeat="hc in propertyDetails.data.healthCareServices" >
-	<p>{{hc}}</p>
-	</div>
-	<p>Shopping</p>
-	<div ng-repeat="s in propertyDetails.data.shopping" >
-	<p>{{s}}</p>
-	</div>
-	<p>Schools</p>
-	<div ng-repeat="ss in propertyDetails.data.schoools" >
-	<p>{{ss}}</p>
-	</div>
-	<p>Crime</p>
-	<div ng-repeat="c in propertyDetails.data.crime" >
-	<p>{{c.name}}: {{c.rate}}</p>
-	</div>
 
+<table class="borderless">
+
+	<tbody>
+		<tr>
+			<td>Name:</td>
+			<td>{{propertyDetails.data.name}}({{propertyDetails.data.id}})</td>
+		</tr>
+		<tr>
+			<td>Decription:</td>
+			<td>{{propertyDetails.data.desc}}</td>
+		</tr>
+		<tr>
+			<td>Cost to Work:</td>
+			<td>{{propertyDetails.data.costToWork}}</td>
+		</tr>
+		<tr>
+			<td>Heath care services:</td>
+			<td>
+				<div ng-repeat="hc in propertyDetails.data.healthCareServices" >
+				<p>{{hc}}</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Shopping:</td>
+			<td>
+				<div ng-repeat="s in propertyDetails.data.shopping" >
+				<p>{{s}}</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Schools:</td>
+			<td>
+				<div ng-repeat="ss in propertyDetails.data.schools" >
+				<p>{{ss}}</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Crime:</td>
+			<td>
+				<div ng-repeat="c in propertyDetails.data.crime" >
+				<p>{{c.name}}: {{c.rate}}</p>
+				</div>
+			</td>
+		</tr>	
+	</tbody>
+</table>
 	<input type="button" value="Apply"/>
 </div>
