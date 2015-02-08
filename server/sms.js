@@ -31,10 +31,6 @@ var config =
 			var respStr = [];
 
 			if (db[from].current < questions.length) {
-				if (db[from].current > 0) {
-					respStr.push('[', db[from].current, '/', questions.length - 1, '] ');
-				}
-
 				if (db[from].current === questions.length - 1) {
 					// last question
 					console.log('Got all information for user', db[from].answers);
